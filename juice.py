@@ -19,7 +19,8 @@ def get_juice():
     if response.status_code != 204:
         return response.json()
     data = response.content
-    return render_template("juice.html", data=data)
+    with open('juice.json', 'w') as outfile:
+        json.dump(data, outfile)
 
 
 if __name__ == '__main__':
